@@ -1,8 +1,8 @@
-// require('dotenv').config();
-// const { URL } = process.env;
+require('dotenv').config();
+const { URL } = process.env;
 const axios = require('axios');
 const getPokemonsController = async () => {
-	const { data } = await axios.get('https://pokeapi.co/api/v2/pokemon');
+	const { data } = await axios.get(`${URL}`);
 
 	const pokemonsData = await Promise.all(
 		data.results.map(async (pokemon) => {
