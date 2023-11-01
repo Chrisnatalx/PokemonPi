@@ -2,49 +2,35 @@ require('dotenv').config();
 const axios = require('axios');
 const { URL } = process.env;
 const { Pokemon } = require('../db');
-const { Op } = require('sequelize');
+
 const getPokemonsByNameController = async (name) => {
-	const response = await axios.get(`${URL}/${name}`);
-	const pokemon = response.data;
-	if (pokemon) {
-		const types = pokemon.types.map((type) => type.type.name);
-		// const stats = pokemon.stats.map((stat) => {
-		// 	return {
-		// 		[stat.stat.name]: stat.base_stat,
-		// 	};
-		// });
+	const pokemonDb = await Pokemon.findOne({
+		where: {
+			name: name,
+		},
+	});
+
+	if (pokemonDb) {
+		return pokemonDb; // Devuelve el Pokémon encontrado en la base de datos.
+	} else {
+		// No se encontró en la base de datos, realiza la solicitud a la API.
+		const response = await axios.get(`${URL}/${name}`);
+		const pokemonapi = response.data;
+		// Mapea los datos de la API
+		const types = pokemonapi.types.map((type) => type.type.name);
 		const pokemonApiMapped = {
-			id: pokemon.id,
-			name: pokemon.name,
-			weight: pokemon.weight,
-			height: pokemon.height,
-			image: pokemon.sprites.other?.dream_world?.front_default,
+			id: pokemonapi.id,
+			name: pokemonapi.name,
+			weight: pokemonapi.weight,
+			height: pokemonapi.height,
+			image: pokemonapi.sprites.other?.dream_world?.front_default,
 			types: types,
-			// stats: stats,
+			hp: pokemonapi.stats[0]['base_stat'],
+			attack: pokemonapi.stats[1]['base_stat'],
+			defence: pokemonapi.stats[2]['base_stat'],
+			speed: pokemonapi.stats[3]['base_stat'],
 		};
-		const pokemonDb = await Pokemon.findAll({
-			where: {
-				name: {
-					[Op.iLike]: `%${name}%`,
-				},
-			},
-		});
-		const pokemonDbMapped = pokemonDb.map((pokemon) => {
-			return {
-				id: pokemon.id,
-				name: pokemon.name,
-				weight: pokemon.weight,
-				height: pokemon.height,
-				image: pokemon.image,
-				types: pokemon.types,
-				life: life,
-				attack: attacl,
-				defence: defence,
-				speed: speed,
-			};
-		});
-		const allPokemons = [pokemonApiMapped, ...pokemonDbMapped];
-		return allPokemons;
+		return pokemonApiMapped;
 	}
 };
 

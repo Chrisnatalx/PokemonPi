@@ -1,8 +1,9 @@
 require('dotenv').config();
 const { URL } = process.env;
 const axios = require('axios');
+const { Pokemon } = require('../db');
 const getPokemonsController = async () => {
-	const { data } = await axios.get(`${URL}`);
+	const { data } = await axios.get(`${URL}?limit=100`);
 
 	const pokemonsData = await Promise.all(
 		data.results.map(async (pokemon) => {
@@ -19,8 +20,9 @@ const getPokemonsController = async () => {
 			return pokemonMapped;
 		})
 	);
+	const pokemonsDb = await Pokemon.findAll();
 
-	return pokemonsData;
+	return pokemonsData.concat(pokemonsDb);
 };
 
 module.exports = getPokemonsController;

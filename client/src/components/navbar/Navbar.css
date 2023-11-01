@@ -1,0 +1,18 @@
+.container-navbar{
+    display: flex;
+    justify-content: flex-end;
+    gap:40px;
+    padding-top: 10px;
+}
+.container-navbar button {
+    background-color: #ef5350;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.container-navbar button:hover{
+    transform: scale(1.05,1.05);
+    background-color: #c62828;
+}
