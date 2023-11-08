@@ -1,3 +1,41 @@
-.container-home{
+/* .container-home{
+    display: flex;
+    flex-direction: row;
+} */
+.container-homeCards{
  background: #2f2f2f;
+ height: 100%;
+}
+.pagination-container{
+    display: flex;
+    justify-content: center;
+}
+.inputHome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inputHome button{
+    background-color: #0078d4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin:10px;
+    width:90px
+}
+.inputHome button:hover{
+    background-color: #0056b3;
+}
+.inputHome input{
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+
+}
+.inputHome select{
+    height: 30px;
+    margin: 10px;
+    width: 100px;
 }

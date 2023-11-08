@@ -19,6 +19,7 @@ export const Cards = ({ pokemons }) => {
                 <div className='cards-sidebar'>
                     <img src="pokemon.png" alt="" />
                 </div>
+
             </div>
 
 

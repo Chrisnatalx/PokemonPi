@@ -4,7 +4,7 @@ const { Pokemon, Type } = require('../db');
 const createPokemonController = async (
 	name,
 	image,
-	life,
+	hp,
 	attack,
 	defence,
 	speed,
@@ -15,7 +15,7 @@ const createPokemonController = async (
 	const newPokemon = await Pokemon.create({
 		name,
 		image,
-		life,
+		hp,
 		attack,
 		defence,
 		speed,

@@ -1,22 +1,21 @@
-.container{
+.pagination{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: #fff;
     gap: 20px;
-    height: 100%;
-    background-image:url('https://pbs.twimg.com/media/FU4mjzGWAAAwKb4.jpg:large'); 
+    color:#fff;
 }
 
-.container button{
+.pagination button {
     background-color: #0078d4;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
-}
-.container button:hover{
+  }
+  
+.pagination button:hover {
     background-color: #0056b3;
 }

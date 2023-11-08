@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 const { URL } = process.env;
-const { Pokemon } = require('../db');
+const { Pokemon, Type } = require('../db');
 const getPokemonByIdController = async (id, source) => {
 	if (source === 'api') {
 		const { data } = await axios.get(`${URL}/${id}`);
@@ -22,7 +22,24 @@ const getPokemonByIdController = async (id, source) => {
 		};
 		return pokemon;
 	} else {
-		return await Pokemon.findByPk(id);
+		const pokemonDb = [
+			await Pokemon.findByPk(id, { include: [{ model: Type }] }),
+		];
+		const newPokemon = pokemonDb.map((pokemon) => {
+			return {
+				id: pokemon.id,
+				name: pokemon.name,
+				image: pokemon.image,
+				hp: pokemon.hp,
+				attack: pokemon.attack,
+				defence: pokemon.defence,
+				height: pokemon.height,
+				weight: pokemon.weight,
+				speed: pokemon.speed,
+				types: pokemon.Types.map((type) => type.name),
+			};
+		});
+		return newPokemon[0];
 	}
 };
 

@@ -5,7 +5,7 @@ export const Landing = () => {
 
     return (
         <div className='container'>
-            <p>Bienvenidos a mi Proyecto de Pokemon</p>
+            <h1>Bienvenidos a mi Proyecto de Pokemon</h1>
             <NavLink to='/home'> <button>Ingresar!!</button></NavLink>
         </div>
     )

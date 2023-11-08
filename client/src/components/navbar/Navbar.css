@@ -1,8 +1,19 @@
 .container-navbar{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container-buttons{
+    display: flex;
     justify-content: flex-end;
     gap:40px;
     padding-top: 10px;
+    margin: 20px;
+    margin-top: -20px;
+}
+.container-logo{
+    display: flex;
+    justify-content: flex-start;
 }
 .container-navbar button {
     background-color: #ef5350;

@@ -1,0 +1,29 @@
+.container-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+    color: #fff;
+}
+.container-form button{
+    background-color: #0078d4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin:10px;
+}
+.container-form button:hover{
+    background-color: #0056b3;
+}
+.container-form input{
+    width: 200px;
+    height: 20px;
+
+}
+.container-form select{
+    height: 60px;
+    width: 100px;
+}

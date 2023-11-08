@@ -5,6 +5,7 @@ import { Home } from './views/home/Home';
 import { Detail } from './views/detail/Detail';
 import { Form } from './views/form/Form';
 import { Navbar } from './components/navbar/Navbar';
+import { UpdatePokemon } from './views/form/UpdatePokemon';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path='/' element={<Landing />} />
           <Route path='/home' element={<Home />} />
           <Route path='/form' element={<Form />} />
+          <Route path='/update/:id' element={<UpdatePokemon />} />
           <Route path='/detail/:id' element={<Detail />} />
         </Routes>
       </div>

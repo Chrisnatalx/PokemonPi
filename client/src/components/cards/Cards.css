@@ -1,15 +1,17 @@
 .container-allCards{
     display: flex;
-        background: #2f2f2f;
+    background: #2f2f2f;
 }
 .container-cards{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 75%;
-    height: 500px;
 }
 .cards-sidebar img{
-    height: 350px;
-    width: 500px;
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    width: 300px;
+    margin-left: 70px;
 } 
 

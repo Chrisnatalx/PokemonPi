@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import { createPokemon } from '../../redux/actions/action'
-import { useDispatch, useSelector } from 'react-redux'
 import './Form.css'
 import { validar } from '../../helpers/validar'
-export const Form = () => {
-
-
+import { useDispatch, useSelector } from 'react-redux'
+import { updatePokemon } from '../../redux/actions/action'
+import { NavLink, useParams } from 'react-router-dom'
+export const UpdatePokemon = () => {
     const dispatch = useDispatch()
     const types = useSelector(state => state.types)
-
+    const { id } = useParams()
     const [inputValue, setInputValue] = useState({
         name: '',
         image: '',
@@ -48,9 +47,10 @@ export const Form = () => {
     const disabledHandler = () => {
         return Object.values(error).some(Boolean);
     }
-    const createNewPokemon = (e) => {
+    const updatePokemonExistent = (e) => {
         e.preventDefault();
-        const newPokemon = {
+        const pokemonUpdated = {
+            id: id,
             name: inputValue.name,
             image: inputValue.image,
             hp: inputValue.hp,
@@ -61,12 +61,12 @@ export const Form = () => {
             weight: inputValue.weight,
             types: inputValue.types
         }
-        dispatch(createPokemon(newPokemon))
+        dispatch(updatePokemon(pokemonUpdated))
     }
     return (
         <>
             <div >
-                <form action="" className='container-form' onSubmit={createNewPokemon}>
+                <form action="" className='container-form' onSubmit={updatePokemonExistent}>
                     <label htmlFor="">Name:
                         <input type="text" onChange={inputHandler} name='name' value={inputValue.name} />
 
@@ -118,7 +118,9 @@ export const Form = () => {
 
                     {error.types && <span style={{ color: 'red' }}>{error.types}</span>}
 
-                    <button type='submit' disabled={disabledHandler()}>Create Pokemon</button>
+
+                    <button type='submit' disabled={disabledHandler()}>Update Pokemon</button>
+
                 </form>
 
             </div>
@@ -126,5 +128,4 @@ export const Form = () => {
         </>
     )
 }
-
 

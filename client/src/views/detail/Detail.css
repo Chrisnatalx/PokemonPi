@@ -49,6 +49,7 @@
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
+    margin:10px;
   }
   
   .container-cardDetailFooter button:hover {
