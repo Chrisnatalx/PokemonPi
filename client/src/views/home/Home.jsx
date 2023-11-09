@@ -49,8 +49,6 @@ export const Home = () => {
     }
     const sortByName = (e) => {
         dispatch(orderByName(e.target.value));
-
-
     }
     const sortByType = (e) => {
         dispatch(filterByType(e.target.value))

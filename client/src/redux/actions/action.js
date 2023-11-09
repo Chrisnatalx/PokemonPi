@@ -52,8 +52,6 @@ export const getPokemonByName = (name) => {
 					type: GETPOKEMONBYNAME,
 					payload: data,
 				});
-			} else {
-				throw new Error('Pokemon no encontrado');
 			}
 		} catch (error) {
 			return alert(error.message);
@@ -70,6 +68,48 @@ export const getTypes = () => {
 			});
 		} catch (error) {
 			return error;
+		}
+	};
+};
+export const createPokemon = (newPokemon) => {
+	return async (dispatch) => {
+		try {
+			const response = await axios.post(url, newPokemon);
+			alert('Pokemon Created');
+			return dispatch({
+				type: CREATEPOKEMON,
+				payload: response.data,
+			});
+		} catch (error) {
+			alert(error.message);
+		}
+	};
+};
+export const deletePokemon = (id) => {
+	return async (dispatch) => {
+		try {
+			await axios.delete(`${url}/${id}`);
+			alert('Pokemon Deleted');
+			return dispatch({
+				type: DELETEPOKEMON,
+				payload: id,
+			});
+		} catch (error) {
+			alert(error.message);
+		}
+	};
+};
+export const updatePokemon = (updatePokemon) => {
+	return async (dispatch) => {
+		try {
+			await axios.put(`${url}`, updatePokemon);
+			alert('Pokemon Update');
+			return dispatch({
+				type: UPDATEPOKEMON,
+				payload: updatePokemon,
+			});
+		} catch (error) {
+			alert(error.message);
 		}
 	};
 };
@@ -101,48 +141,5 @@ export const filterByType = (type) => {
 export const reset = () => {
 	return {
 		type: RESET,
-	};
-};
-export const createPokemon = (newPokemon) => {
-	return async (dispatch) => {
-		try {
-			const response = await axios.post(url, newPokemon);
-			alert('Pokemon Created');
-			return dispatch({
-				type: CREATEPOKEMON,
-				payload: response.data,
-			});
-		} catch (error) {
-			alert(error.message);
-		}
-	};
-};
-export const deletePokemon = (id) => {
-	return async (dispatch) => {
-		try {
-			await axios.delete(`${url}/${id}`);
-			alert('Pokemon Deleted');
-			return dispatch({
-				type: DELETEPOKEMON,
-				payload: id, // Enviamos el ID del Pokémon eliminado
-			});
-		} catch (error) {
-			alert(error.message);
-		}
-	};
-};
-
-export const updatePokemon = (updatePokemon) => {
-	return async (dispatch) => {
-		try {
-			await axios.put(`${url}`, updatePokemon);
-			alert('Pokemon Update');
-			return dispatch({
-				type: UPDATEPOKEMON,
-				payload: updatePokemon, // Envía el ID del Pokémon actualizado
-			});
-		} catch (error) {
-			alert(error.message);
-		}
 	};
 };

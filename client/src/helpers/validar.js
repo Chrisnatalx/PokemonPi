@@ -21,7 +21,7 @@ export const validar = (input) => {
 	if (input.height <= 0) {
 		errors.height = 'Hegith must be greater than 0';
 	}
-	if (input.weight === '') {
+	if (input.weight <= 0) {
 		errors.weight = 'Weight must be greater than 0';
 	}
 	if (input.types.lenght <= 0) {

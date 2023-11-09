@@ -39,7 +39,6 @@ export const rootReducer = (state = initialState, action) => {
 				return {
 					...state,
 					allPokemons: [...action.payload],
-					pokemons: [...action.payload],
 				};
 			}
 		case GETPOKEMONTYPE:
@@ -68,10 +67,9 @@ export const rootReducer = (state = initialState, action) => {
 			const updatedPokemonId = action.payload.id;
 			const updatedPokemons = state.allPokemons.map((pokemon) => {
 				if (pokemon.id === updatedPokemonId) {
-					// Actualiza el Pokémon con los nuevos datos
 					return {
 						...pokemon,
-						// Aquí incluye las propiedades actualizadas, por ejemplo:
+
 						name: action.payload.name,
 						image: action.payload.image,
 						hp: action.payload.hp,
@@ -81,8 +79,6 @@ export const rootReducer = (state = initialState, action) => {
 						height: action.payload.hegith,
 						weight: action.payload.wegith,
 						types: action.payload.types,
-						// image: 'nuevaImagen',
-						// ... y así sucesivamente
 					};
 				}
 				return pokemon;
@@ -97,15 +93,14 @@ export const rootReducer = (state = initialState, action) => {
 		case ORDERBYID:
 			const orderPokemon = [...state.allPokemons];
 			if (action.payload === 'API') {
-				// Restaurar datos originales
 				return {
 					...state,
 					allPokemons: state.pokemons,
 				};
 			}
-			// Ordenar por ID numérico
+
 			const filteredPokemons = orderPokemon.filter((pokemon) => {
-				return typeof pokemon.id !== 'number'; // Filtrar por ID numérico
+				return typeof pokemon.id !== 'number';
 			});
 			return {
 				...state,

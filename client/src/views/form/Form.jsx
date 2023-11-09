@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { createPokemon } from '../../redux/actions/action'
+import React, { useEffect, useState } from 'react'
+import { createPokemon, getTypes } from '../../redux/actions/action'
 import { useDispatch, useSelector } from 'react-redux'
 import './Form.css'
 import { validar } from '../../helpers/validar'
@@ -63,6 +63,12 @@ export const Form = () => {
         }
         dispatch(createPokemon(newPokemon))
     }
+    useEffect(() => {
+
+        dispatch(getTypes())
+
+    }, [dispatch])
+
     return (
         <>
             <div >
@@ -118,7 +124,7 @@ export const Form = () => {
 
                     {error.types && <span style={{ color: 'red' }}>{error.types}</span>}
 
-                    <button type='submit' disabled={disabledHandler()}>Create Pokemon</button>
+                    <button type='submit' disabled={disabledHandler()}  >Create Pokemon</button>
                 </form>
 
             </div>

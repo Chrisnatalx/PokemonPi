@@ -5,16 +5,14 @@ const { Pokemon, Type } = require('../db');
 const getPokemonByIdController = async (id, source) => {
 	if (source === 'api') {
 		const { data } = await axios.get(`${URL}/${id}`);
-		const pokemonData = data;
-		console.log(pokemonData);
-		const types = pokemonData.types.map((type) => type.type.name);
+
 		const pokemon = {
 			id: data.id,
 			name: data.name,
 			height: data.height,
 			weight: data.weight,
 			image: data.sprites.other?.dream_world?.front_default,
-			types: types,
+			types: data.types.map((type) => type.type.name),
 			hp: data.stats[0]['base_stat'],
 			attack: data.stats[1]['base_stat'],
 			defence: data.stats[2]['base_stat'],

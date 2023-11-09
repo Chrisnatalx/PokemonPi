@@ -30,14 +30,14 @@ const getPokemonsByNameController = async (name) => {
 		const response = await axios.get(`${URL}/${name}`);
 		const pokemonApi = response.data;
 		// Mapea los datos de la API
-		const types = pokemonApi.types.map((type) => type.type.name);
+
 		const pokemonApiMapped = {
 			id: pokemonApi.id,
 			name: pokemonApi.name,
 			weight: pokemonApi.weight,
 			height: pokemonApi.height,
 			image: pokemonApi.sprites.other?.dream_world?.front_default,
-			types: types,
+			types: pokemonApi.types.map((type) => type.type.name),
 			hp: pokemonApi.stats[0]['base_stat'],
 			attack: pokemonApi.stats[1]['base_stat'],
 			defence: pokemonApi.stats[2]['base_stat'],
