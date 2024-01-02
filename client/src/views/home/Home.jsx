@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { filterByType, getAllPokemons, getPokemonByName, getTypes, orderByAttack, orderById, orderByName, reset, } from '../../redux/actions/action'
+import { filterByType, getAllPokemons, getPokemonByName, getTypes, orderByAttack, orderById, orderByName, reset, getWaterFighting } from '../../redux/actions/action'
 import { Cards } from '../../components/cards/Cards'
 import { Pagination } from '../../components/pagination/Pagination'
 import './Home.css'
@@ -56,6 +56,9 @@ export const Home = () => {
     const sortByAttack = (e) => {
         dispatch(orderByAttack(e.target.value))
     }
+    const getWaterAndFighting = () => {
+        dispatch(getWaterFighting())
+    }
     useEffect(() => {
 
         dispatch(getAllPokemons())
@@ -71,6 +74,7 @@ export const Home = () => {
                     <input type="text" onChange={handlerInputChange} value={inputValue} placeholder='Buscar Pokemon...' />
                     <button onClick={handlerSubmit}>Search</button>
                     <button onClick={handlerReset}>Reset</button>
+                    <button onClick={getWaterAndFighting}> Water fighting </button>
 
                     <select onChange={sortHandler}>
                         {["API", "DATABASE"].map((order) => (

@@ -11,6 +11,7 @@ import {
 	RESET,
 	DELETEPOKEMON,
 	UPDATEPOKEMON,
+	GETWATERANDFIGHTING,
 } from '../actions/action';
 
 let initialState = { allPokemons: [], pokemons: [], detail: [], types: [] };
@@ -146,6 +147,15 @@ export const rootReducer = (state = initialState, action) => {
 				allPokemons: state.pokemons,
 			};
 		}
+		case GETWATERANDFIGHTING:
+			const sorted = state.allPokemons.filter(
+				(pokemon) =>
+					pokemon.types.includes('water') && pokemon.types.includes('fighting')
+			);
+			return {
+				...state,
+				allPokemons: [...sorted],
+			};
 		default:
 			return state;
 	}

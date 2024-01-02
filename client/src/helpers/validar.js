@@ -15,7 +15,7 @@ export const validar = (input) => {
 	if (input.defence <= 0) {
 		errors.defence = 'Defence must be greater than 0';
 	}
-	if (input.speed === '') {
+	if (input.speed <= 0) {
 		errors.speed = 'You must complete this field';
 	}
 	if (input.height <= 0) {

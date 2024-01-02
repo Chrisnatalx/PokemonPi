@@ -10,6 +10,7 @@ export const FILTERTYPE = 'ORDERBYNAMFILTERTYPEE';
 export const RESET = 'RESET';
 export const DELETEPOKEMON = 'DELETEPOKEMON';
 export const UPDATEPOKEMON = 'UPDATEPOKEMON';
+export const GETWATERANDFIGHTING = 'GETWATERANDFIGHTING';
 import axios from 'axios';
 
 const url = `http://localhost:3001/pokemon`;
@@ -141,5 +142,18 @@ export const filterByType = (type) => {
 export const reset = () => {
 	return {
 		type: RESET,
+	};
+};
+export const getWaterFighting = () => {
+	return async (dispatch) => {
+		try {
+			const { data } = await axios(url);
+			return dispatch({
+				type: GETWATERANDFIGHTING,
+				payload: data,
+			});
+		} catch (error) {
+			alert(error.message);
+		}
 	};
 };

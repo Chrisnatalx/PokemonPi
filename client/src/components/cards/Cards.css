@@ -4,8 +4,11 @@
 }
 .container-cards{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 75%;
+}
+.cards-sidebar{
+    width: 25%;
 }
 .cards-sidebar img{
     display: flex;
@@ -14,4 +17,16 @@
     width: 300px;
     margin-left: 70px;
 } 
+.cards-sidebar h1{
+    font-family: 'Pokemon Solid', sans-serif;
+  font-size: 40px;
+  text-shadow: -1px -1px 0 #3c5aa6, 1px 1px 0 #3c5aa6, -1px 3px 0 #3c5aa6, 3px 3px 0 #3c5aa6, 0px 0px 5px #c7a008;
+  color: #ffcb05;
+}
+.cards-sidebar p{
+    font-family: 'Pokemon Solid', sans-serif;
+  font-size: 30px;
+  color: #ffcb05;
+  text-shadow: -1px -1px 0 #3c5aa6, 1px 1px 0 #3c5aa6, -1px 3px 0 #3c5aa6, 3px 3px 0 #3c5aa6, 0px 0px 5px #c7a008;
+}
 
